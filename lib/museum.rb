@@ -25,4 +25,18 @@ class Museum
   def admit(patron)
     @patrons << patron
   end
+
+  def patrons_by_exhibit_interest
+    patrons_per_exhibit = {}
+    @exhibits.each do |exhibit|
+      patrons_per_exhibit_array = []
+      @patrons.each do |patron|
+        if patron.interests.include? exhibit.name
+          patrons_per_exhibit_array << patron
+        end
+      end
+      patrons_per_exhibit[exhibit] = patrons_per_exhibit_array
+    end
+    patrons_per_exhibit
+  end
 end
