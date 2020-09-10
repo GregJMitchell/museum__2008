@@ -52,9 +52,9 @@ class MuseumTest < Minitest::Test
     @dmns.add_exhibit(@gems_and_minerals)
     @dmns.add_exhibit(@dead_sea_scrolls)
     @dmns.add_exhibit(@imax)
-    @dmns.admit(patron_1)
-    @dmns.admit(patron_2)
-    @dmns.admit(patron_3)
+    @dmns.admit(@patron_1)
+    @dmns.admit(@patron_2)
+    @dmns.admit(@patron_3)
 
     assert_equal [@patron_1, @patron_2, @patron_3], @dmns.patrons
   end
