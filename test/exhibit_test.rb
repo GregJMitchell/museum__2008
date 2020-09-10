@@ -3,9 +3,16 @@ require 'minitest/pride'
 require './lib/exhibit'
 
 class ExhibitTest < Minitest::Test
-  def test_it_exists
-    exhibit = Exhibit.new({name: "Gems and Minerals", cost: 0})
+  def setup
+    @exhibit = Exhibit.new({name: "Gems and Minerals", cost: 0})
+  end
 
-    assert_instance_of Exhibit, exhibit
+  def test_it_exists
+    assert_instance_of Exhibit, @exhibit
+  end
+
+  def test_it_has_readable_attributes
+    assert_equal "Gems and Minerals", @exhibit.name
+    assert_equal 0, @exhibit.cost
   end
 end
