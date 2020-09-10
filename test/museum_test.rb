@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
+require 'mocha/minitest'
 require './lib/exhibit'
 require './lib/museum'
 require './lib/patron'
@@ -105,6 +106,7 @@ class MuseumTest < Minitest::Test
     @dmns.add_exhibit(@gems_and_minerals)
     @dmns.add_exhibit(@dead_sea_scrolls)
     @dmns.add_exhibit(@imax)
+    @dmns.stubs(:sample).returns(@patron_1_1)
 
     assert_equal @patron_1_1, @dmns.draw_lottery_winner(@dead_sea_scrolls)
   end
