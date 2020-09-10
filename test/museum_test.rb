@@ -26,6 +26,6 @@ class MuseumTest < Minitest::Test
     @dmns.add_exhibit(@dead_sea_scrolls)
     @dmns.add_exhibit(@imax)
 
-    assert_equal [@gems_and_minerals, @dead_sea_scrolls, @imax]
+    assert_equal [@gems_and_minerals, @dead_sea_scrolls, @imax], @dmns.exhibits
   end
 end
