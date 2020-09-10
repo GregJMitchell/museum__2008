@@ -118,9 +118,9 @@ class MuseumTest < Minitest::Test
     @dmns.add_exhibit(@dead_sea_scrolls)
     @dmns.add_exhibit(@imax)
     dmns = mock('museum object')
-    dmns.stubs(:announce_lottery_winner).returns(No winners for this lottery)
+    dmns.stubs(:announce_lottery_winner).returns('No winners for this lottery')
 
-    assert_equal 'Bob has won the IMAX edhibit lottery', @dmns.announce_lottery_winner(imax)
-    assert_equal 'No winners for this lottery', dmns.announce_lottery_winner(gems_and_minerals)
+    assert_equal 'Bob has won the IMAX lottery', @dmns.announce_lottery_winner(@imax)
+    assert_equal 'No winners for this lottery', dmns.announce_lottery_winner(@gems_and_minerals)
   end
 end
