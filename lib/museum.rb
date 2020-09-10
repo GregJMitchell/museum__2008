@@ -14,9 +14,7 @@ class Museum
     recommenations = []
     patron.interests.each do |interest|
       @exhibits.each do |exhibit|
-        if exhibit.name == interest
-          recommenations << exhibit
-        end
+        recommenations << exhibit if exhibit.name == interest
       end
     end
     recommenations
@@ -31,9 +29,7 @@ class Museum
     @exhibits.each do |exhibit|
       patrons_per_exhibit_array = []
       @patrons.each do |patron|
-        if patron.interests.include? exhibit.name
-          patrons_per_exhibit_array << patron
-        end
+        patrons_per_exhibit_array << patron if patron.interests.include? exhibit.name
       end
       patrons_per_exhibit[exhibit] = patrons_per_exhibit_array
     end
@@ -41,8 +37,9 @@ class Museum
   end
 
   def ticket_lottery_contestants(exhibit)
-    @patrons.find_all do |patron|
-      patron.spending_money < exhibit.cost
+    patrons = patrons_by_exhibit_interest[exhibit]
+    patrons.find_all do |patron|
+      patron.spending_money < exhibit.cost 
     end
   end
 
@@ -53,6 +50,6 @@ class Museum
   def announce_lottery_winner(exhibit)
     return 'No winners for this lottery' if draw_lottery_winner(exhibit).nil?
 
-  "#{draw_lottery_winner(exhibit).name} has won the #{exhibit.name} lottery"
+    "#{draw_lottery_winner(exhibit).name} has won the #{exhibit.name} lottery"
   end
 end
